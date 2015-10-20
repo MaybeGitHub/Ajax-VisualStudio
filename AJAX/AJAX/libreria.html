@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <input id="busqueda" type="text" />
+    <input id="buscar" type="submit" value="Buscar" />
+    <hr />
+    <input id="titulo" type="radio" value="0" name="tipo" checked="checked"/>Titulo
+    <input id="autor" type="radio" value="1"name="tipo"/>Autor
+    <input id="isbn" type="radio" value="2" name="tipo"/>ISBN
+    <input id="categoria" type="radio" value="3" name="tipo" />Categoria
+    <hr />
+    <div id="mostrar"></div>
+
+    <script>
+        document.getElementById("buscar").addEventListener("click", xmlRequest, false);
+        emisor = new XMLHttpRequest();
+        var xml;
+        function xmlRequest(){
+            emisor.onreadystatechange = function () {
+                if (emisor.status == 200 && emisor.readyState == 4) {
+                    xml = emisor.responseXML;
+                    patron = document.getElementById("busqueda").value;
+                    patron == "" ? "" : obtenerLibros(patron);
+                }
+            }
+            emisor.open("get", "libreria.xml", true);
+            emisor.send();
+
+            function obtenerLibros(patron) {
+                salida = "";
+                Array.prototype.slice.call(document.getElementsByName("tipo"), 0).forEach(function (el, pos, ar) {
+                    el.checked == true ? Array.prototype.slice.call(xml.getElementsByTagName("Libro"), 0).forEach(function (ele, posi, arr) {
+                        ele.childNodes[(el.value + 1)].childNodes[0].nodeValue == patron ? Array.prototype.slice.call(ele.childNodes,0).forEach(function(elem, posic, arra){
+                            salida += elem.childNodes[0].nodeValue + "   ";
+                        }):"";
+                    }) : "";
+                    salida += " €<br/>";
+                })
+                document.getElementById("mostrar").innerHTML = salida;
+            }
+        }
+    </script>
+</body>
+</html>

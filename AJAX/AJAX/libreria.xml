@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Libreria>
+  <Libro>
+    <Titulo>AA</Titulo>
+    <Autor>AAaaAA</Autor>
+    <ISBN>01</ISBN>
+    <Categoria>A*A</Categoria>
+    <Precio>0,01</Precio>
+  </Libro>
+  <Libro>
+    <Titulo>AB</Titulo>
+    <Autor>AAabBB</Autor>
+    <ISBN>02</ISBN>
+    <Categoria>A*B</Categoria>
+    <Precio>0,02</Precio>
+  </Libro>
+  <Libro>
+    <Titulo>BA</Titulo>
+    <Autor>BBbaAA</Autor>
+    <ISBN>03</ISBN>
+    <Categoria>B*A</Categoria>
+    <Precio>0,11</Precio>
+  </Libro>
+  <Libro>
+    <Titulo>BB</Titulo>
+    <Autor>BBbbBB</Autor>
+    <ISBN>04</ISBN>
+    <Categoria>B*B</Categoria>
+    <Precio>0,12</Precio>
+  </Libro>
+</Libreria>
