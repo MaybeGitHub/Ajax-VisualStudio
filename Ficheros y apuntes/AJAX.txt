@@ -1,0 +1,82 @@
+Todos los navegadores tienen un modulo para poder hacer peticiones AJAX ( asincronas ). Este metodo desde javascript se maneja con un prototipo
+XMLHttpRequest ( no funciona en IE que es un activeX de la clase MsXML2.XMLHTTP.version).
+
+
+1 Paso: Creamos un objeto de ese prototipo:
+	try{
+	  var peticion = new XMLHttpRequest();
+	}catch{
+	  ["MsXML2.XMLHTTP.6.0", "MsXML2.XMLHTTP.5.0", "MsXML2.XMLHTTP.4.0", "MsXML2.XMLHTTP.3.0", "MsXML2.XMLHTTP.2.0", "MsXML2.XMLHTTP.1.0"].forEach(function(el,pos,ar){
+																		         var peticion = new ActiveX(el);
+																		       }
+																		      )
+	}
+	peticion.onreadystatechange = function(){
+					  if ( this.readystate==4 && this.status==200 ){
+					     document.getElementById("panelResultado").value=this.ResponseText();
+					  }
+				      }
+	peticion.open("GET", "http://localhost/datos.aspx", true);
+	peticion.send(null);
+
+2 Paso: Para hacer la peticion AJAX, tengo que manejar el objeto recien creado de ese prototipo.
+	Propiedades:
+	-----------
+		o readystate -> es un entero que describe el estado por el que va pasando la peticion AJAX.
+
+				************					        **************
+				*PC Cliente*						*Servidor-Web*
+				************						**************
+		       -------------------------------------+				
+		      / http://servidor-web/indice.html      \
+		     ( Peticion: AJAX - Recurso: ElTiempo     -------------------------> Recibe Peticion 
+		      \		Http_Request		     /			     y devuelve el resultado	
+ 		       -------------------------------------+
+
+				Resultados: 
+					- 0 : No inicializada
+					- 1 : peticion AJAX construida pero no mandada
+					- 2 : peticion AJAX se manda al servidor
+					- 3 : peticion AJAX procesndo en servidor
+					- 4 : respuesta ( peticion completada ) <---------------------------------------------------------------------------------------------------------+
+																							  		                                                                  |
+		o status ->  codigo de respuesta Http-Response.																                                                  |
+		o onreadystatechange -> Debes definir una funcion callback que quieres que se ejecute cada vez que se cambie el valor						                  |
+					del readystate.																	                                                                  |
+																							                                                                          |
+	Metodos																						                                                                      |
+	-------																						                                                                      |
+	    o open("metodo_HTTP", "url", "true | false") -> abrimos conexion al servidor para hacer peticion AJAX.									                      |
+		  - "metodo_HTTP" -> si queremos mandar datos por get o por post.                                                                                             |
+		  - true | false -> si la operacion q vamos a hacer es asincrona o no. Por defecto es true, pero si se pone a false, la propiedad onreadystatechange no funciona hasta el 4.
+
+	    o send(null | "variable=valor&variable=valor&....) -> en el momento que se usa send, se dispara el state 2.
+		   "get"	      "post"
+	    si haces peticiones
+
+	    o responseText() -> Me devuelve los datos del lado del servidor en formato de texto plano.
+	    o responseXML()  -> Me devuelve los datos del lado del servidor en XMl.
+	    
+*********************************************************** Ejemplo ************************************************************************
+<Libreria>
+	<Libro categoria="Informatica">
+		<Titulo>Programacion C#</Titulo>
+		<Autor>Manuel Garcia</Autor>
+	</Libro>
+	<Libro categoria="Derecho">
+		<Titulo>Derecho Penal</Titulo>
+		<Autor>Teresa Rodriguez</Autor>
+	</Libro>
+</Libreria>
+
+Element : Libreria
+   +>>> Element : Libro <----------> Attribute : categoria
+   			+>>> Element : Titulo        +>>> Text : "Informatica"
+   					+>>> Text : "Programacion C#"
+   			+>>> Element : Autor
+   				    +>>> Text : "Manuel Garcia"
+   +>>> Element : Libro <----------> Attribute : categoria
+   			+>>> Element : Titulo        +>>> Text : "Derecho"
+   					+>>> Text : "Derecho Penal#"
+   			+>>> Element : Autor
+   				    +>>> Text : "Teresa Rodriguez"

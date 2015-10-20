@@ -1,0 +1,16 @@
+<html>
+    <head></head>
+    <body>
+        <input type="button" id="boton" value="Pulsame" />
+        <script>
+            var posX = 0;
+            var boton = document.getElementById("boton");
+            boton.style.position = "relative";
+            function move(){
+                boton.style.left = posX + "px";
+                posX++;
+            }
+            setInterval(move, 10);
+        </script> 
+    </body>
+</html>

@@ -1,0 +1,16 @@
+<html>
+    <head></head>
+    <body>
+        <input type="button" id="boton" value="Pulsame" />
+        <script>
+            var objetoBoton={
+                clickeado : false,
+                nombre : objetoBoton,
+                click:function(){
+                    console.log("El estado del boton es: " + this.clickeado);
+                }
+            }
+            document.getElementsByTagName("input")[0].addEventListener("click", objetoBoton.click.bind(objetoBoton), false);
+        </script>
+    </body>
+</html>

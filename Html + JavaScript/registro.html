@@ -1,0 +1,29 @@
+<html>
+    <head>
+    </head>
+    <body>
+        <form>
+            <p id="parrafo1" >Usuario</p>
+            <input type="text" id="user_TB" name="Usuario"/>
+            <p id="parrafo2" >Contrasena</p>
+            <input type="password" id="pass_TB" name="password"/>
+            <input type="submit" id="registro" value="Submit"/>
+        </form>
+        
+        <script>
+            function comprueba(){
+                Array.prototype.slice.call(document.getElementsByTagName("input"),0).forEach(function(el,pos,ar){
+                    if(el.getAttribute("type")!="submit" && el.value==""){
+                   
+                        window.alert("rellena el siguiente campo:_" + el.id);  
+                        el.appendChild(document.createElement("label"));
+                        el.childNodes[0].appendChild(document.createTextNode("*"));
+                        el.childNodes[0].style.color="red";
+                        document.body.insertBefore(el.childNodes[0],el);
+                    }
+                });
+            }
+            document.getElementById("registro").addEventListener("click",comprueba,false);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,109 @@
+<html>
+
+<head>
+    <title>PAGINA REGISTRO</title>
+</head>
+
+<body>
+    <div id="cabecera">
+        <h2>REGISTRO USUARIO</h2>
+    </div>
+    <div id="datosPersonales">
+        <form>
+            <fieldset>
+                <legend>Datos Personales</legend>
+
+                <label for="nombre">Nombre</label>
+                <input type="text" name="txtNombre" />
+
+                <label for="nif">NIF</label>
+                <input type="text" name="txtNif" />
+                <br>
+                <br>
+
+                <label for="apellidos">Apellidos</label>
+                <input type="text" name="txtApellidos" />
+                <br>
+                <br>
+
+                <label for="direccion">Direccion</label>
+                <input type="text" name="txtDireccion" />
+
+                <label for="codPostal">C.P.</label>
+                <input type="text" name="txtCodPostal" />
+                <br>
+                <br>
+
+                <label for="localidad">Localidad</label>
+                <input type="text" name="txtLocalidad" />
+
+                <label for="provincia">Provincia</label>
+                <input type="text" name="txtProvincia" />
+
+                <br>
+                <br>
+
+                <label for="telefono">Telefono</label>
+                <input type="text" name="txtTelefono" />
+
+                <label for="mail">Email</label>
+                <input type="text" name="txtMail" />
+            </fieldset>
+        </form>
+    </div>
+    <input type="checkbox" id="checking" name="datosNOCoincidentes" value="NoCoincide" />Check!! Si datos de facturacion no coinciden con datos personales
+    <br>
+    <br>
+    <div id="botones">
+        <input type="button" id="Aceptar" value="Aceptar"/>
+    </div>
+    <script>
+        var yaCreado = false;
+        var nuevoDiv
+        
+        function textBox(val, cont){
+            this.validado=val
+            this.contenido=cont
+        }
+        
+        textBox.prototype.validar=function(){
+            return true;
+        }
+    
+        function mostrarDiv(){  // con este metodo seleccino el boton, lo descuelgo, coloco el nuevoDiv y recuelgo el boton para q salga en el orden q yo quiero
+            var divBotones=document.getElementById("botones");
+            document.body.appendChild(nuevoDiv);
+            document.body.appendChild(divBotones);
+            nuevoDiv.style.visibility = "visible";
+        }
+        
+        function crearDiv(){  // este metodo solo CREA el div y avisa al elemento de control booleano yaCreado, para q cambie de valor y asi nunca mas se use este metodo. 
+            var div = document.getElementById("datosPersonales");
+            nuevoDiv = div.cloneNode(true);
+            nuevoDiv.style.id = "datosFacturacion";
+            yaCreado = true;
+        }
+        
+        function ocultarDiv(){
+             nuevoDiv.style.visibility = "hidden";  //con esto lo oculto
+             document.body.removeChild(nuevoDiv);   //con esto coloco el boton de nuevo debajo el div de arriba, sino pongo esto, el boton seguiria abajo del todo porque el div EXISTE aunque no se vea.
+        }
+        
+        function checkeado() {
+               var check = document.getElementById("checking");
+               
+               if ( !yaCreado ){
+                    crearDiv();
+                }
+                   
+               if ( check.checked == true ) {
+                    mostrarDiv();
+                }else{
+                    ocultarDiv();
+                }
+        }
+        
+        document.getElementById("checking").addEventListener("click", checkeado, false);
+    </script>
+</body>
+</html>

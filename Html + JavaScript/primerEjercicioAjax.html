@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<body>
+<div id="expositor">Esto es el texto normal</div>
+<br/>
+<input id="boton" type="Button" value="Cambiar Texto"/>
+<script>
+  var textoAntiguo = document.getElementById("expositor").innerHTML;
+  function loadDoc() {
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+          if (xhttp.readyState == 4 && xhttp.status == 200) {
+              if ( textoAntiguo == document.getElementById("expositor").innerHTML ){
+                document.getElementById("expositor").innerHTML = xhttp.responseText;
+              }else{
+                document.getElementById("expositor").innerHTML = textoAntiguo;
+              }
+          }
+      };
+      xhttp.open("GET", "../Files/frases.txt", true);
+      xhttp.send(null);
+  }
+  document.getElementById("boton").addEventListener("click", loadDoc, false);
+  document.getElementById("boton").childNodes
+</script>
+</body>
+</html>
+

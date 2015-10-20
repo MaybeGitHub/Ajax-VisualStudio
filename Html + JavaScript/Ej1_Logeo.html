@@ -1,0 +1,36 @@
+<html>
+
+<head>
+    <title>PAGINA LOGIN</title>
+</head>
+
+<body>
+   <form>
+        <label>Usuario:</label>
+        <input type="text" id="Usuario" name="Usuario" />
+        <br>
+
+        <label>Password:</label>
+        <input type="text" id="Password" name="Password" />
+        <br>
+
+        <input type="button" id="iniciar" value="Inicia Sesion"></input>
+        <input type="button" id="registrar" value="Registrame"></input>
+    </form>
+
+    <script>
+        function comprueba() {
+            Array.prototype.slice().slice.call(document.getElementsByTagName("input"), 0).forEach(function(el, pos, ar) {
+                if (el.getAttribute("type") != "button" && el.value == "") {
+                    window.alert("campo vacio en: " + el.id);
+                }
+            })
+        }
+        document.getElementById("registrar").addEventListener("click", function(){
+                location.href = "./Ej1_Registro.html";
+            }, false);
+        document.getElementById("iniciar").addEventListener("click", comprueba, false);
+    </script>
+</body>
+
+</html>
