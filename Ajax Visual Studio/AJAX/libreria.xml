@@ -1,31 +1,31 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Libreria>
   <Libro>
-    <Titulo>AA</Titulo>
-    <Autor>AAaaAA</Autor>
+    <Titulo>Pocoyo</Titulo>
+    <Autor>Poky</Autor>
     <ISBN>01</ISBN>
-    <Categoria>A*A</Categoria>
+    <Categoria>Niños</Categoria>
     <Precio>0,01</Precio>
   </Libro>
   <Libro>
-    <Titulo>AB</Titulo>
-    <Autor>AAabBB</Autor>
+    <Titulo>Programacion</Titulo>
+    <Autor>Program</Autor>
     <ISBN>02</ISBN>
-    <Categoria>A*B</Categoria>
+    <Categoria>Educacion</Categoria>
     <Precio>0,02</Precio>
   </Libro>
   <Libro>
-    <Titulo>BA</Titulo>
-    <Autor>BBbaAA</Autor>
+    <Titulo>La bella y la bestia</Titulo>
+    <Autor>Disney</Autor>
     <ISBN>03</ISBN>
-    <Categoria>B*A</Categoria>
+    <Categoria>Niños</Categoria>
     <Precio>0,11</Precio>
   </Libro>
   <Libro>
-    <Titulo>BB</Titulo>
-    <Autor>BBbbBB</Autor>
+    <Titulo>Aprende XML facil</Titulo>
+    <Autor>Prompt</Autor>
     <ISBN>04</ISBN>
-    <Categoria>B*B</Categoria>
+    <Categoria>Educacion</Categoria>
     <Precio>0,12</Precio>
   </Libro>
 </Libreria>
