@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Usuarios</title>
+	<meta charset="utf-8" />
+</head>
+<body>    
+    Login: <input type="text" id="login" />
+    Password: <input type="text" id="password" />
+    <input type="submit" id="enviar" value="Enviar" />
+
+    <script>
+        document.getElementById("enviar").addEventListener("click", hacerPeticionHttp, false);
+        var peticion = new XMLHttpRequest();
+        function hacerPeticionHttp() {
+            var respuesta;
+            peticion.onreadystatechange = function(){
+                if (peticion.status == 200 && peticion.readyState == 4) {
+                    respuesta = JSON.parse(peticion.responseText);
+                    alert(respuesta.mensaje);
+                }
+            }
+            peticion.open("POST", "http://localhost:2068/autentificacion.aspx", true);
+            peticion.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            peticion.send("datos=" + JSON.stringify({ "login": document.getElementById("login").value, "password": document.getElementById("password").value }));
+        }
+    </script>
+</body>
+</html>

@@ -66,6 +66,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="autentificacion.aspx" />
+    <Content Include="login.html" />
     <Content Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -78,9 +80,18 @@
     <Content Include="libreria.html" />
     <Content Include="libreria.xml" />
     <Content Include="servidor.aspx" />
+    <Content Include="usuarios.txt" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="autentificacion.aspx.cs">
+      <DependentUpon>autentificacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="autentificacion.aspx.designer.cs">
+      <DependentUpon>autentificacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Autentificador.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="servidor.aspx.cs">
       <DependentUpon>servidor.aspx</DependentUpon>
