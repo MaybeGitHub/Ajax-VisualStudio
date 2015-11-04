@@ -67,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="autentificacion.aspx" />
+    <Content Include="InicioHTMLFileReader.aspx" />
     <Content Include="login.html" />
     <Content Include="packages.config" />
     <None Include="Web.Debug.config">
@@ -92,6 +93,13 @@
       <DependentUpon>autentificacion.aspx</DependentUpon>
     </Compile>
     <Compile Include="Autentificador.cs" />
+    <Compile Include="InicioHTMLFileReader.aspx.cs">
+      <DependentUpon>InicioHTMLFileReader.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InicioHTMLFileReader.aspx.designer.cs">
+      <DependentUpon>InicioHTMLFileReader.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="servidor.aspx.cs">
       <DependentUpon>servidor.aspx</DependentUpon>
@@ -100,6 +108,9 @@
     <Compile Include="servidor.aspx.designer.cs">
       <DependentUpon>servidor.aspx</DependentUpon>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\uploads\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
